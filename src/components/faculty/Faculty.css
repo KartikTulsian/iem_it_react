@@ -1,0 +1,243 @@
+/* General Styling */
+.faculty-container {
+    text-align: center;
+    padding: 20px;
+    background: #f8f9fa;
+}
+
+.faculty-header {
+    font-size: 35px;
+    font-weight: bold;
+    color: #7a2fe3;
+    margin-bottom: 20px;
+}
+.faculty-header::after {
+    content: "";
+    width: 40%;
+    height: 3px;
+    background: #7a2fe3;
+    display: block;
+    margin: 8px auto 0;
+  }
+
+/* Faculty Card Styling */
+.faculty-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s ease-in-out;
+    width: 280px;
+    position: relative;
+    margin: 20px;
+    z-index: 1;
+}
+
+.faculty-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(122, 47, 227, 0.5);
+}
+
+.faculty-card__img-container img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #7a2fe3;
+    transition: transform 0.3s ease-in-out;
+}
+
+.faculty-card__img-container img:hover {
+    transform: rotate(5deg) scale(1.05);
+  }
+
+.faculty-card h3 {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.faculty-card p {
+    font-size: 15px;
+    color: #555;
+}
+
+.faculty-card__info {
+    margin-top: 12px;
+    
+}
+
+.faculty-card__info a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;  /* Adjust size */
+    height: 45px; /* Keep width and height equal */
+    border-radius: 50%;
+    background-color: #7a2fe3;
+    color: #fff;
+    font-size: 20px;
+    margin: 0 7px;
+    transition: background 0.2s ease-in-out, transform 0.2s ease-in-out;
+    box-shadow: 0 4px 10px rgba(122, 47, 227, 0.3);
+    text-decoration: none;
+}
+
+.faculty-card__info a:hover {
+    background-color: #ffffff;
+    color: #7a2fe3;
+    transform: scale(1.1);
+}
+
+/* Faculty Tree Structure */
+.faculty-tree {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+/* HOD Node */
+.tree-hod {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+/* Vertical Connector from HOD */
+.tree-hod::after {
+    content: "";
+    position: absolute;
+    width: 3px;
+    height: 39px;
+    background-color: #7a2fe3;
+    top: 94%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Faculty Row */
+.tree-row {
+    display: flex;
+    justify-content: center;  /* Ensures even spacing */
+    align-items: flex-start;
+    flex-wrap: nowrap;  /* Prevents wrapping */
+    width: 80%;
+    position: relative;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+/* Horizontal Connector for Faculty Members */
+.tree-row::before {
+    content: "";
+    position: absolute;
+    top: 19px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #7a2fe3;
+}
+
+/* Vertical connectors from the row to each faculty node */
+.tree-node {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.tree-node::before {
+    content: "";
+    position: absolute;
+    top: -19px;
+    left: 50%;
+    width: 3px;
+    height: 38px;
+    background-color: #7a2fe3;
+}
+
+/* Professors */
+.professor-group .faculty-card {
+    background: #e3f2fd;  /* Light Blue */
+    border: 2px solid #2196F3;
+}
+.professor-group .tree-node::before,
+.professor-group .tree-row::before {
+    background-color: #2196F3;  /* Blue Line */
+}
+
+/* Associate Professors */
+.associate-prof-group .faculty-card {
+    background: #e8f5e9; /* Light Green */
+    border: 2px solid #4CAF50;
+}
+.associate-prof-group .tree-node::before,
+.associate-prof-group .tree-row::before {
+    background-color: #4CAF50; /* Green Line */
+}
+
+/* Assistant Professors Group 1 */
+.assistant-prof-group-1 .faculty-card {
+    background: #fff3e0; /* Light Orange */
+    border: 2px solid #FF9800;
+}
+.assistant-prof-group-1 .tree-node::before,
+.assistant-prof-group-1 .tree-row::before {
+    background-color: #FF9800; /* Orange Line */
+}
+
+/* Assistant Professors Group 2 */
+.assistant-prof-group-2 .faculty-card {
+    background: #f3e5f5; /* Light Purple */
+    border: 2px solid #9C27B0;
+}
+.assistant-prof-group-2 .tree-node::before,
+.assistant-prof-group-2 .tree-row::before {
+    background-color: #9C27B0; /* Purple Line */
+}
+
+
+/* .tree-hod::after, 
+.tree-row::before, 
+.tree-node::before {
+    z-index: -1; 
+} */
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    .tree-row {
+        flex-wrap: wrap; /* Allow wrapping */
+        justify-content: center;
+    }
+
+    .faculty-card {
+        width: 90%; /* Take most of the screen width */
+        max-width: 300px;
+        margin: 15px auto; /* Center align */
+    }
+    
+    .tree-row::before {
+        display: none; /* Hide the horizontal line for clarity */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .faculty-header {
+        font-size: 28px; /* Reduce header size */
+    }
+    
+    .faculty-card {
+        width: 100%; /* Take full width */
+        max-width: 280px;
+    }
+
+    .faculty-card__info a {
+        width: 40px; 
+        height: 40px; 
+        font-size: 18px;
+    }
+}
+

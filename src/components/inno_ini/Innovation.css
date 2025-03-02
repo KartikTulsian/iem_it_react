@@ -1,0 +1,129 @@
+/* Overall Section Styling */
+.innovation-hub {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(90deg, #3e2578, #533bb4);
+}
+
+/* Main Heading */
+.innovation-heading {
+  font-size: 36px;
+  font-weight: bold;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+/* Subheading */
+.innovation-subheading {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 50px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Innovation Cards Section */
+.innovation-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* Individual Innovation Card */
+.innovation-card {
+  width: 320px;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
+}
+
+.innovation-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.4), -10px -10px 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Icon Container */
+.innovation-icon-container {
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px;
+  box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.2), inset -5px -5px 10px rgba(255, 255, 255, 0.1);
+}
+
+.innovation-icon {
+  width: 60px;
+  height: 60px;
+  filter: drop-shadow(2px 2px 5px rgba(255, 255, 255, 0.2));
+}
+
+/* Title Styling */
+.innovation-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Description Styling */
+.innovation-desc {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 0 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .innovation-card {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .innovation-heading {
+    font-size: 28px;
+  }
+
+  .innovation-subheading {
+    font-size: 16px;
+  }
+
+  .innovation-card {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .innovation-title {
+    font-size: 18px;
+  }
+
+  .innovation-desc {
+    font-size: 13px;
+  }
+
+  .innovation-icon-container {
+    width: 80px;
+    height: 80px;
+  }
+
+  .innovation-icon {
+    width: 50px;
+    height: 50px;
+  }
+}
