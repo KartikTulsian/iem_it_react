@@ -412,20 +412,20 @@ export let team = [
     work: "DEVELOPER AND LEAD INSTRUCTOR",
   },
   {
-    cover: "./images/team/t2.webp",
-    name: "Ph.D Arthur MaGregor",
-    work: "DEVELOPER AND LEAD INSTRUCTOR",
+    cover: "./images/team/2.png",
+    name: "Kartik Tulsian",
+    work: "DEVELOPER",
   },
   {
-    cover: "./images/team/t3.webp",
-    name: "Ph.D Anna Hanzen",
-    work: "DEVELOPER AND LEAD INSTRUCTOR",
+    cover: "./images/team/1.png",
+    name: "Debayan De",
+    work: "DEVELOPER",
   },
-  {
-    cover: "./images/team/t4.webp",
-    name: "Ph.D Brian Wooden",
-    work: "DEVELOPER AND LEAD INSTRUCTOR",
-  },
+  // {
+  //   cover: "./images/team/t4.webp",
+  //   name: "Ph.D Brian Wooden",
+  //   work: "DEVELOPER AND LEAD INSTRUCTOR",
+  // },
   // {
   //   cover: "./images/team/t1.webp",
   //   name: "Ph.D Adrian Molises",
