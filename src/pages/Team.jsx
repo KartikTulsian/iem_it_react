@@ -5,6 +5,7 @@ import Teamcard from '../components/team/Teamcard'
 import Awrapper from '../components/about/Awrapper'
 import Footer from '../components/Common/Footer/Footer'
 import Contact from './Contact'
+import GoToTop from '../components/Common/GotoTop/GoToTop'
 
 export default function Team() {
   return (
@@ -14,6 +15,7 @@ export default function Team() {
       <Teamcard/>
       <Contact/>
       <Awrapper/>
+      <GoToTop/>
       <Footer/>
     </div>
   )

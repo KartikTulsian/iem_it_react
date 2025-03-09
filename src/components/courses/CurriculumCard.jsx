@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react';
 import { Container, Row, Table, Button } from 'react-bootstrap';
-import { useInView } from "react-intersection-observer";
-import "./Courses.css"
-import '@react-pdf-viewer/core/lib/styles/index.css';
-import { pdfjs, Document, Page } from 'react-pdf';
-import "react-pdf/dist/esm/Page/AnnotationLayer.css";
-import "react-pdf/dist/esm/Page/TextLayer.css";
+// import { Document, Page } from 'react-pdf';
+// import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
+// import 'react-pdf/dist/esm/Page/TextLayer.css';
+import HTMLFlipBook from "react-pageflip";
+import * as pdfjsLib from "pdfjs-dist/build/pdf";
 
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  'pdfjs-dist/build/pdf.worker.min.mjs',
-  import.meta.url,
-).toString();
+import "pdfjs-dist/build/pdf.worker"; 
+import './Courses.css';
 
 const semesters = ["4TH SEM", "6TH SEM", "8TH SEM"];
 
@@ -131,25 +128,54 @@ const course_struct = {
 }
 
 const syllabusFiles = {
-  "4TH SEM": "/pdfs/4th_Semester_DetailedSyllabus.pdf",
+  "4TH SEM": "../pdfs/4th_Semester_DetailedSyllabus.pdf",
   "6TH SEM": "../pdfs/Detailed_Syllabus_for_6th_Semester_removed.pdf",
+  "8TH SEM": "../pdfs/IT_2021-2025.pdf",
 };
 
 export default function CurriculumCard() {
-  const [selectedSem, setSelectedSem] = useState(null);
-  const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
-  const [scale, setScale] = useState(1.2); // Zoom Level
+  const [selectedSem, setSelectedSem] = useState(null);  // Default to first semester
+  const [selectedPdf, setSelectedPdf] = useState(null);
+  const [pdfPages, setPdfPages] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(0);
 
-  function onDocumentLoadSuccess({ numPages }) {
-    setNumPages(numPages);
-    setPageNumber(1);
-  }
+  useEffect(() => {
+    if (selectedSem) {
+      setSelectedPdf(syllabusFiles[selectedSem]);  // Update PDF when semester changes
+    }
+  }, [selectedSem]);
 
-  const nextPage = () => setPageNumber((prev) => (prev < numPages ? prev + 1 : prev));
-  const prevPage = () => setPageNumber((prev) => (prev > 1 ? prev - 1 : prev));
-  const zoomIn = () => setScale((prev) => Math.min(prev + 0.2, 2));
-  const zoomOut = () => setScale((prev) => Math.max(prev - 0.2, 0.8));
+  useEffect(() => {
+    const loadPdf = async () => {
+      if (!selectedPdf) return;
+      setLoading(true);
+      try {
+        const pdf = await pdfjsLib.getDocument(selectedPdf).promise;
+        const pages = [];
+
+        for (let i = 1; i <= pdf.numPages; i++) {
+          const page = await pdf.getPage(i);
+          const viewport = page.getViewport({ scale: 3 });
+          const canvas = document.createElement("canvas");
+          const context = canvas.getContext("2d");
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+
+          await page.render({ canvasContext: context, viewport }).promise;
+          pages.push(canvas.toDataURL("image/png"));
+        }
+
+        setPdfPages(pages);
+      } catch (error) {
+        console.error("Error loading PDF:", error);
+      }
+      setLoading(false);
+    };
+
+    loadPdf();
+  }, [selectedPdf]);
+
   return (
     <section className='curriculum' id="curriculum-section">
       <Container className='sem_tabs'>
@@ -239,27 +265,25 @@ export default function CurriculumCard() {
       {selectedSem && syllabusFiles[selectedSem] && (
         <Container className="syll-container">
           <h2 className="heading">{selectedSem} Syllabus</h2>
-          
-          <div className="pdf-controls">
-            <Button onClick={prevPage} disabled={pageNumber <= 1}>
-              ◀ Prev
-            </Button>
-            <span>Page {pageNumber} of {numPages}</span>
-            <Button onClick={nextPage} disabled={pageNumber >= numPages}>
-              Next ▶
-            </Button>
-            <Button onClick={zoomOut}><i class="fa-solid fa-minus"></i></Button>
-            <span>Zoom: {Math.round(scale * 100)}%</span>
-            <Button onClick={zoomIn}><i class="fa-solid fa-plus"></i></Button>
-          </div>
 
-          <div className="pdf-viewer">
-            <Document
-              file={syllabusFiles[selectedSem]}
-              onLoadSuccess={onDocumentLoadSuccess}
-            >
-              <PDFPage pageNumber={pageNumber} scale={scale} />
-            </Document>
+          <div className="flipbook_syll_container">
+            {loading ? (
+              <p>Loading PDF...</p>
+            ) : (
+              <HTMLFlipBook
+                width={500}
+                height={580}
+                showCover={true}
+                onFlip={(e) => setCurrentPage(e.data)}
+              >
+                {pdfPages.map((src, index) => (
+                  <div key={index} className="syll_page">
+                    <img src={src} alt={`Page ${index + 1}`} className="syll_pdf-page" />
+                    <div className="syll_page-number">Page {index + 1}</div>
+                  </div>
+                ))}
+              </HTMLFlipBook>
+            )}
           </div>
         </Container>
       )}
@@ -267,20 +291,5 @@ export default function CurriculumCard() {
   );
 }
 
-// Lazy-loaded PDF Page Component using Intersection Observer
-function PDFPage({ pageNumber, scale }) {
-  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.2 });
-  const [visible, setVisible] = useState(false);
 
-  useEffect(() => {
-    if (inView) {
-      setVisible(true);
-    }
-  }, [inView]);
 
-  return (
-    <div ref={ref} className={`pdf-page-wrapper ${visible ? "show" : ""}`}>
-      {visible && <Page pageNumber={pageNumber} scale={scale} />}
-    </div>
-  );
-}

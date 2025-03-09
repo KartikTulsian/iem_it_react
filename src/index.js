@@ -16,6 +16,7 @@ import Students from './pages/Students';
 import Inno_Ini from './pages/Inno_Ini';
 import Faculty from './pages/Faculty';
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 let allRoutes = createBrowserRouter (
   [

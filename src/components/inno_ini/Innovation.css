@@ -1,7 +1,7 @@
 /* Overall Section Styling */
 .innovation-hub {
   text-align: center;
-  padding: 80px 20px;
+  padding: 0 20px 80px 20px;
   background: linear-gradient(90deg, #3e2578, #533bb4);
 }
 
@@ -13,6 +13,7 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 10px;
+  padding-top: 80px;
 }
 
 /* Subheading */
@@ -30,7 +31,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 30px;
+  gap: 50px;
 }
 
 /* Individual Innovation Card */
@@ -81,12 +82,247 @@
 }
 
 /* Description Styling */
-.innovation-desc {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 14px;
-  line-height: 1.6;
-  padding: 0 15px;
+/* General Styling */
+
+/* Publication Section */
+#publication-section {
+  padding: 50px 0;
+  background: linear-gradient(135deg, #141E30, #243B55);
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  margin-top: 40px;
+  font-family: 'Poppins', sans-serif;
 }
+
+/* Tab Buttons */
+.public-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Adjust as needed */
+  flex-wrap: wrap; /* Ensures proper spacing when buttons wrap */
+}
+
+.public-tabs {
+  display: flex;
+  
+  justify-content: center;
+  margin-bottom: 30px;
+  gap: 20px; /* Ensure proper spacing between buttons */
+  flex-wrap: wrap; /* Ensures proper layout on smaller screens */
+}
+
+/* Button Styling */
+.toggle-btn {
+  padding: 14px 26px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 30px;
+  border: none;
+  transition: all 0.3s ease-in-out;
+  background: linear-gradient(90deg, #ff416c, #ff4b2b);
+  color: white;
+  box-shadow: 0 4px 10px rgba(255, 65, 108, 0.4);
+  margin-right: 30px;
+}
+.toggle-btn:last-child {
+  margin-right: 0; /* Prevents extra margin on the last button */
+}
+
+.toggle-btn:hover {
+  transform: scale(1.1);
+  background: linear-gradient(90deg, #ff4b2b, #ff416c);
+  box-shadow: 0 6px 15px rgba(255, 65, 108, 0.5);
+}
+
+.toggle-btn.active {
+  background: linear-gradient(90deg, #28a745, #23d5ab);
+  color: white;
+}
+
+/* Publication Card */
+.publication-content {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  /* overflow-x: auto; */
+  width: 100%;
+}
+
+.publication-card {
+  width: 95%;
+  max-width: 1250px;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 35px;
+  margin-top: 30px;
+}
+
+/* Header */
+.pub-header {
+  font-size: 26px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #007bff, #0056b3);
+  color: white;
+  padding: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Section Title */
+.section-title-pub {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  margin-top: 25px;
+  text-align: left;
+  border-bottom: 3px solid #ff416c;
+  display: inline-block;
+  padding-bottom: 5px;
+  letter-spacing: 1px;
+}
+
+/* Table Styling */
+.publication-table {
+  margin-top: 20px;
+  max-width: 100%;
+  width: auto;
+  /* overflow-x: auto; */
+  display: block;
+  border-radius: 10px;
+  overflow: hidden;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.publication-table th {
+  background: linear-gradient(90deg, #007bff, #0056b3);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+  border-bottom: 3px solid #fff;
+  text-transform: uppercase;
+  word-wrap: break-word;
+}
+
+.publication-table tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.publication-table tr:hover {
+  /* background: rgba(255, 255, 255, 0.3); */
+  transition: 0.3s ease-in-out;
+}
+
+.publication-table td {
+  text-align: center;
+  padding: 10px;
+  color: #fff;
+  font-size: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  word-wrap: break-word;
+}
+
+/* Add subtle hover effect */
+.publication-table td:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transition: 0.3s ease-in-out;
+}
+
+/* Hover Effects */
+.publication-card:hover {
+  transform: scale(1.02);
+  transition: 0.3s ease-in-out;
+}
+
+/* RESPONSIVENESS */
+@media (max-width: 992px) {
+  .toggle-btn {
+    padding: 12px 22px;
+    font-size: 16px;
+  }
+  
+  .pub-header {
+    font-size: 22px;
+    padding: 15px;
+  }
+
+  .section-title-pub {
+    font-size: 20px;
+  }
+
+  .publication-table th,
+  .publication-table td {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .toggle-btn {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+
+  .publication-card {
+    padding: 20px;
+  }
+
+  .pub-header {
+    font-size: 20px;
+    padding: 12px;
+  }
+
+  .section-title-pub {
+    font-size: 18px;
+  }
+
+  .publication-table th,
+  .publication-table td {
+    font-size: 13px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 576px) {
+  .public-tabs {
+    flex-direction: column; /* Stack buttons on small screens */
+    align-items: center;
+  }
+
+  .toggle-btn {
+    width: 80%; /* Make buttons take up most of the width */
+    padding: 12px;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .publication-card {
+    padding: 15px;
+  }
+
+  .pub-header {
+    font-size: 18px;
+    padding: 10px;
+  }
+
+  .section-title-pub {
+    font-size: 16px;
+  }
+
+  .publication-table th,
+  .publication-table td {
+    font-size: 12px;
+    padding: 6px;
+  }
+}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -125,5 +361,336 @@
   .innovation-icon {
     width: 50px;
     height: 50px;
+  }
+}
+
+
+/* Annual Report */
+
+/* ✨ Magazine Section Styling */
+#magazine-section {
+  padding: 40px 0 60px 0;
+  background: linear-gradient(135deg, #0f0f27, #2b5766, #2d2c64);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  margin-top: 50px;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+}
+
+/* 🌟 Flipbook Container with Glassmorphism */
+.flipbook-mag-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.15); /* Glass effect */
+  backdrop-filter: blur(10px);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 100%;
+  max-width: 1400px;
+  max-height: 850px;
+  position: relative;
+  overflow: hidden;
+  margin: 30px auto;
+}
+
+/* 🏷️ Flipbook Pages */
+.mag_page {
+  width: 50% !important;
+  max-width: 600px;
+  height: 100%;
+  max-height: 850px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  clip-path: inset(0 0 0 0);
+  /* padding: 10px; */
+  /* transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; */
+}
+
+/* 🖼️ PDF Page Image */
+.mag_pdf-page {
+  width: 100%;
+  height: auto;
+  max-height: 98%;
+  object-fit: contain;
+  border-radius: 5px;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* 📄 Page Number Indicator */
+.mag_page-number {
+  position: absolute;
+  bottom: 12px;
+  right: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 6px 12px;
+  border-radius: 8px;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* 📖 Flipbook Hover Animation */
+.mag_page:hover {
+  /* transform: scale(1.02); */
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* 🏆 Magazine Heading */
+.magazine_heading {
+  font-size: 3rem;
+  color: #fff;
+  font-weight: bold;
+  margin-top: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+  animation: fadeInDown 1s ease-in-out;
+}
+
+.magazine_subheading {
+  font-size: 1.3rem;
+  color: #e11645 !important;
+  margin-bottom: 40px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  animation: fadeInUp 1s ease-in-out;
+}
+/* 🔄 Loading Indicator */
+.loading-message {
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+  animation: fadeIn 1s ease-in-out infinite alternate;
+}
+
+/* 🎭 Loading Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 📊 Flipbook Navigation */
+.mag_page-counter {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  font-size: 14px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 6px 12px;
+  border-radius: 8px;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 📱 Responsive Enhancements */
+@media (max-width: 768px) {
+  .flipbook-mag-container {
+    max-width: 95%;
+    padding: 15px;
+  }
+
+  .mag_page {
+    max-height: 500px;
+  }
+
+  .mag_page-number,
+  .mag_page-counter {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  .magazine_heading {
+    font-size: 22px;
+  }
+}
+
+
+/* Alumni Report Section */
+#alumni-report-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 20px;
+  background: linear-gradient(135deg, #1c1e55, #39497a, #302c64);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-top: 40px;
+  border-radius: 30px;
+}
+
+/* Heading Styling */
+.alumni-heading {
+  font-size: 3rem;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+  animation: fadeInDown 1s ease-in-out;
+}
+
+.alumni-subheading {
+  font-size: 1.8rem;
+  color: #f9c74f !important;
+  margin-bottom: 40px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+/* Alumni Cards Container */
+.alumni-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+  width: 90%;
+  max-width: 1300px;
+  margin-bottom: 40px;
+  perspective: 1500px;
+  transform: rotate(-5deg);
+}
+
+/* Alumni Card */
+.alumni-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background 0.3s ease-in-out;
+  position: relative;
+  padding-bottom: 15px;
+  /* transform: rotate(-6deg) skewY(-3deg) translateY(0px); */
+  /* transition: all 0.4s ease-in-out; */
+}
+
+/* Hover Effects */
+.alumni-card:hover {
+  transform: rotate(0deg) skewY(0deg) scale(1.1) translateY(-13px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Animated Glowing Borders */
+/* Circular Glowing Effect */
+.alumni-card::before {
+  content: "";
+  position: absolute;
+  width: 140%;
+  height: 150%;
+  top: -10%;
+  left: -10%;
+  background: conic-gradient(from 0deg, #006eff, #7a1bff, #00d5ff, #be1bff, #00ffff);
+  border-radius: 50%;
+  z-index: -1;
+  filter: blur(12px);
+  opacity: 0.6;
+  animation: glowRotate 4s linear infinite;
+}
+
+/* Smooth Rotating Animation */
+@keyframes glowRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* Alumni Card Image */
+.alumni-card-img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  filter: brightness(80%);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.alumni-card:hover .alumni-card-img {
+  filter: brightness(100%);
+  transform: scale(1.1);
+}
+
+/* Alumni Card Content */
+.alumni-card-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.alumni-card-title {
+  font-size: 1.7rem;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 10px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.alumni-card-desc {
+  font-size: 1.3rem;
+  color: #f9c74f;
+  margin-top: 5px;
+}
+
+/* Neon Glow Animation */
+@keyframes glowRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Fade In Animations */
+@keyframes fadeInDown {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .alumni-heading {
+    font-size: 2.5rem;
+  }
+
+  .alumni-subheading {
+    font-size: 1.5rem;
+  }
+
+  .alumni-cards-container {
+    transform: none;
+  }
+
+  .alumni-card {
+    transform: rotate(-3deg);
+  }
+
+  .alumni-card:hover {
+    transform: scale(1.05);
   }
 }

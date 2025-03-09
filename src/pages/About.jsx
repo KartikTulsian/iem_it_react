@@ -6,6 +6,7 @@ import Footer from '../components/Common/Footer/Footer'
 import Aboutprog from '../components/about/Aboutprog'
 import Aboutvision from '../components/about/Aboutvision'
 import Hprogs from '../components/home/Hprogs'
+import GoToTop from '../components/Common/GotoTop/GoToTop'
 
 export default function About() {
   return (
@@ -16,6 +17,7 @@ export default function About() {
       <Aboutvision/>
       <Hprogs/>
       {/* <Aboutcard/> */}
+      <GoToTop/>
       <Footer/>
     </div>
   )

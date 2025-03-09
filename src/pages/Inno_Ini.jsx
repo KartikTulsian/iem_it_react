@@ -4,6 +4,7 @@ import Header from '../components/Common/Header/Header'
 import Footer from '../components/Common/Footer/Footer'
 import InnovationIniCard from '../components/inno_ini/InnovationIniCard'
 import MagazineCard from '../components/inno_ini/MagazineCard'
+import GoToTop from '../components/Common/GotoTop/GoToTop'
 
 export default function Inno_Ini() {
   return (
@@ -11,7 +12,8 @@ export default function Inno_Ini() {
       <Header/>
       <Back title='Explore DevWorld' image="../images/innovation.jpg"/>
       <InnovationIniCard/>
-      <MagazineCard/>
+      {/* <MagazineCard/> */}
+      <GoToTop/>
       <Footer/>
     </div>
   )

@@ -1,6 +1,9 @@
 .head {
     padding: 20px 0;
     color: #fff;
+    
+    position: relative;
+    z-index: 10;
 }
 
 .logo-tagline {
@@ -35,6 +38,8 @@
 header {
     background-color: rgba(255, 255, 255, 0.678);
     margin: 0 30px;
+    position: relative;
+    z-index: 10;
 }
 header ul {
     padding: 30px 20px;
@@ -42,10 +47,11 @@ header ul {
 header li {
     margin-right: 40px;
     list-style-type: none;
+    font-size: 1.1rem;
 }
 header ul li a {
     color: #7a2fe3;
-    font-weight: 500;
+    font-weight: 540;
     transition: 0.4s;
     text-decoration: none;
 }

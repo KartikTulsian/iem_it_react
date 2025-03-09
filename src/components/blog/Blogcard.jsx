@@ -3,15 +3,21 @@ import { blog } from '../../dummydata'
 import { Container } from 'react-bootstrap'
 import PlacementCard from './PlacementCard';
 import Awrapper from '../about/Awrapper';
-import StuChapCard from './StuChapCard';
+import StudyMaterialsCard from './StudyMaterialsCard';
+import StudentAchieveCard from './StudentAchieveCard';
+import StudChapterCard from './StudChapterCard';
 
 export default function Blogcard() {
     const [showPlacemants, setShowPlacements] = useState(false);
     const [showStuChap, setShowStuChap] = useState(false);
+    const [showStudMats, setShowStudMats] = useState(false);
+    const [showStudAchieve, setShowStudAchieve] = useState(false);
 
     const handlePlacementsClick = () => {
         setShowPlacements(true);
-        setShowStuChap(false); // Hide curriculum if routine is clicked
+        setShowStuChap(false);
+        setShowStudAchieve(false); 
+        setShowStudMats(false) // Hide curriculum if routine is clicked
         setTimeout(() => {
             const placementSection = document.getElementById("placement-section");
             if (placementSection) {
@@ -22,17 +28,44 @@ export default function Blogcard() {
 
     const handleStuChapClick = () => {
         setShowStuChap(true);
-        setShowPlacements(false); // Hide curriculum if routine is clicked
+        setShowPlacements(false);
+        setShowStudAchieve(false); 
+        setShowStudMats(false) // Hide curriculum if routine is clicked
         setTimeout(() => {
-            const stuChapSection = document.getElementById("student_chapter-section");
+            const stuChapSection = document.getElementById("student-chapter-section");
             if (stuChapSection) {
                 stuChapSection.scrollIntoView({ behavior: "smooth" });
             }
         }, 200);
     };
+    const handleStudMatsClick = () => {
+        setShowStuChap(false);
+        setShowPlacements(false);
+        setShowStudAchieve(false); 
+        setShowStudMats(true) // Hide curriculum if routine is clicked
+        setTimeout(() => {
+            const stdMatsSection = document.getElementById("materials-section");
+            if (stdMatsSection) {
+                stdMatsSection.scrollIntoView({ behavior: "smooth" });
+            }
+        }, 200);
+    };
+    const handleStudAchieveClick = () => {
+        setShowStuChap(false);
+        setShowPlacements(false);
+        setShowStudMats(false);
+        setShowStudAchieve(true) // Hide curriculum if routine is clicked
+        setTimeout(() => {
+            const stdAchieveSection = document.getElementById("achievement-section");
+            if (stdAchieveSection) {
+                stdAchieveSection.scrollIntoView({ behavior: "smooth" });
+            }
+        }, 200);
+    };
+
     return (
         <div>
-            <section className='blog padding'>
+            <section className='blog'>
             <Container className='grid2'>
                 {blog.map((val, i) => {
                     return (
@@ -40,8 +73,10 @@ export default function Blogcard() {
                         onClick={() => {
                             if (val.title === "Placements") handlePlacementsClick();
                             if (val.title === "Student Chapter") handleStuChapClick();
+                            if (val.title === "Study Materials and Assignments") handleStudMatsClick();
+                            if (val.title === "Students Achievement") handleStudAchieveClick();
                         }}
-                        style={{ cursor: val.title === "Placements" || val.title === "Student Chapter" ? "pointer" : "default" }}
+                        style={{ cursor: val.title === "Placements" || val.title === "Student Chapter" || val.title === "Study Materials and Assignments" || val.title === "Students Achievement"? "pointer" : "default" }}
                         >
                             <div className='blog-img'>
                                 <img src={val.cover} alt='' />
@@ -57,7 +92,9 @@ export default function Blogcard() {
             </Container>
         </section>
         {showPlacemants && <PlacementCard/>}
-        {showStuChap && <StuChapCard/>}
+        {showStuChap && <StudChapterCard/>}
+        {showStudMats && <StudyMaterialsCard/>}
+        {showStudAchieve && <StudentAchieveCard/>}
         <Awrapper/>
         </div>
         

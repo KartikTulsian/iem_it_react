@@ -81,7 +81,9 @@ footer ul li {
     margin-bottom: 20px;
     list-style: none;
     color: #7a2fe3;
+    cursor: pointer;
 }
+
 
 footer .link li::before {
     content: "⟶";
@@ -118,12 +120,16 @@ footer .last ul li {
     display: flex;
     margin-bottom: 50px;
     list-style: none;
+    line-height: 1.5rem;
+    /* cursor: pointer; */
 }
 
 footer .last i {
-    width: 60px;
+    /* width: 60px; */
     font-size: 20px;
     color: #7a2fe3;
+    margin-right: 10px;
+    margin-top: 5px;
 }
 footer a{
     text-decoration: none;

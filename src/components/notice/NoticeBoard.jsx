@@ -56,16 +56,16 @@ export default function NoticeBoard() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
             whileHover={{ scale: 1.05 }}
+            onClick={() => setSelectedImage(notice)}
           >
             {/* Image Click to Enlarge */}
             <img 
               src={notice.img} 
               alt="Notice" 
-              className="notice-img" 
-              onClick={() => setSelectedImage(notice.img)} 
+              className="notice-img"  
             />
             <h3>{notice.user}</h3>
-            <p>{notice.desc}</p>
+            <p>{notice.desc.length > 400 ? `${notice.desc.substring(0,400)}...` : notice.desc}</p>
             
             {/* Truncate the URL */}
             <a 
@@ -87,11 +87,25 @@ export default function NoticeBoard() {
       </Masonry>
 
       {/* Full-Screen Image Modal */}
-      {selectedImage && (
+      {/* {selectedImage && (
         <div className="image-modal" onClick={() => setSelectedImage(null)}>
           <img src={selectedImage} alt="Full View" className="full-image" />
         </div>
+      )} */}
+      {selectedImage && (
+        <div className="modal-overlay" onClick={() => setSelectedImage(null)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-image">
+              <img src={selectedImage.img} alt={selectedImage.user} className="full-image" />
+            </div>
+            <div className="modal-details">
+              <h2>{selectedImage.user}</h2>
+              <p>{selectedImage.desc}</p>
+            </div>
+          </div>
+        </div>
       )}
+
     </div>
   );
 }

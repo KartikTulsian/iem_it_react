@@ -34,7 +34,7 @@ export default function NaacCert() {
                 </Col>
 
                 <Col lg={6} className='cert-section'>
-                    <img src='..\images\naac_certificate.jpg' alt='NAAC Accreditation'/>
+                    <img src='../images/naac_certificate.jpg' alt='NAAC Accreditation'/>
                 </Col>
             </Row>
         </Container>

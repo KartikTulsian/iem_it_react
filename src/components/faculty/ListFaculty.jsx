@@ -1,28 +1,30 @@
-import React from "react";
-import { facultyList } from "../../dummydata"; 
+import React from 'react'
+import { itfaculty } from "../../dummydata"; 
 import "./Faculty.css";
 
-const FacultyNode = ({ faculty }) => {
+const FacultyNode = ({ faculty}) => {
   return (
-    <div className="faculty-card">
+    <div className="faculty-card" >
       <div className="faculty-card__img-container">
         <img src={faculty.img || "/default-profile.png"} alt={faculty.title} />
+        {/* Icons beside the image (hidden initially, appear on hover) */}
+      <div className="faculty-card__info">
+        {faculty.linkedin && (
+          <a href={faculty.linkedin} target="_blank" rel="noopener noreferrer">
+            <i className="fa-brands fa-linkedin"></i>
+          </a>
+        )}
+        {faculty.gscholar && (
+          <a href={faculty.gscholar} target="_blank" rel="noopener noreferrer">
+            <i className="fa-brands fa-google-scholar"></i>
+          </a>
+        )}
       </div>
+      </div>
+      
       <div className="faculty-card__container">
         <h3>{faculty.title}</h3>
-        <p>{faculty.desg}</p>
-        <div className="faculty-card__info">
-          {faculty.linkedin && (
-            <a href={faculty.linkedin} target="_blank" rel="noopener noreferrer">
-              <i className="fa-brands fa-linkedin"></i>
-            </a>
-          )}
-          {faculty.gscholar && (
-            <a href={faculty.gscholar} target="_blank" rel="noopener noreferrer">
-              <i className="fa-brands fa-google-scholar"></i>
-            </a>
-          )}
-        </div>
+        <p><b>{faculty.desg}</b></p>
       </div>
     </div>
   );
@@ -34,7 +36,7 @@ const FacultyTree = ({ facultyData }) => {
   }
 
   return (
-    <div className="faculty-tree">
+    <div className="faculty-tree" id="mentors-section">
       {/* HOD at the Top */}
       <div className="tree-node root">
         {facultyData.hod.map((hod) => (
@@ -50,8 +52,8 @@ const FacultyTree = ({ facultyData }) => {
       </svg> */}
 
       {/* Professors, Associate Professors, Assistant Professors */}
-      <div className="tree-row">
-      {[facultyData.prof, facultyData.asso_prof, facultyData.assi_prof1, facultyData.assi_prof2]
+      <div className="tree-row_m">
+      {[facultyData.prof1, facultyData.prof2, facultyData.prof3, facultyData.prof4]
         .filter(group => Array.isArray(group))
         .map((group, index) => {
           let groupClass = ""; // Default class
@@ -89,16 +91,16 @@ const FacultyTree = ({ facultyData }) => {
 };
 
 export default function ListFaculty() {
-  const facultyData = facultyList || {};
-
-  if (!facultyData.hod || !Array.isArray(facultyData.hod)) {
-    return <div>Loading faculty data...</div>;
-  }
-
-  return (
-    <div className="faculty-container">
-      <h1 className="faculty-header">Program Information Technology</h1>
-      <FacultyTree facultyData={facultyData} />
-    </div>
-  );
+  const facultyData = itfaculty || {};
+  
+    if (!facultyData.hod || !Array.isArray(facultyData.hod)) {
+      return <div>Loading faculty data...</div>;
+    }
+  
+    return (
+      <div className="faculty-container" id='faculty-section'>
+        <h1 className="faculty-header">IT Faculty List</h1>
+        <FacultyTree facultyData={facultyData} />
+      </div>
+    );
 }

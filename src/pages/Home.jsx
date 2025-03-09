@@ -9,6 +9,7 @@ import Hprogs from '../components/home/Hprogs'
 import Hodmsg from '../components/home/Hodmsg'
 import NaacCert from '../components/home/NaacCert'
 import NoticeBoard from '../components/notice/NoticeBoard'
+import GoToTop from '../components/Common/GotoTop/GoToTop'
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       {/* <Aboutcard/> */}
       {/* <Hblog/> */}
       <NaacCert/>
+      <GoToTop/>
       <Footer/>
     </div>
   )
